@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/autodeliver", produces = "application/json")
@@ -33,15 +34,22 @@ public class AutoDeliverController {
                 userId + "的默认简历当前状态为：" + forObject);*/
 
         //获取注册中心中的实例列表
-        final List<ServiceInstance> instances = discoveryClient.getInstances("lagou-service-resume");
+        /*final List<ServiceInstance> instances = discoveryClient.getInstances("lagou-service-resume");
         //获取实例（此处不考虑负载，直接取第一个）
         final ServiceInstance instance = instances.get(0);
+
+        //获取自定义元数据
+        final Map<String, String> metadata = instance.getMetadata();
+        for(String key : metadata.keySet()) {
+            System.out.println(key + ", " + metadata.get(key));
+        }
+
         //根据实例的信息拼接请求地址
         final String ipAddr = instance.getHost();
         final int port = instance.getPort();
         String url = "http://" + ipAddr + ":" + port + "/resume/openstate/" + userId;
-        Integer forObject =
-                restTemplate.getForObject(url, Integer.class);
+        System.out.println(url);*/
+        Integer forObject = restTemplate.getForObject("http://lagou-service-resume/resume/openstate/" + userId, Integer.class);
         System.out.println("======>>>调⽤简历微服务，获取到⽤户" +
                 userId + "的默认简历当前状态为：" + forObject);
         return forObject;

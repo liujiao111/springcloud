@@ -19,7 +19,8 @@
         <module>eureka-8761</module>
         <module>eureka-8762</module>
         <module>lagou-service-common</module>
-        <module>在lagou-service-resume</module>
+        <module>lagou-service-resume</module>
+        <module>lagou-service-resume-8081</module>
         <module>lagou-service-resume</module>
         <module>lagou-service-autodeliver</module>
     </modules>

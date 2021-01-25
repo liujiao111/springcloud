@@ -20,4 +20,8 @@ eureka:
       defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
   instance:
     instance-id: ${spring.cloud.client.ipaddress}:${spring.application.name}:${server.port}:@project.version@
+    metadata-map: # 自定义元数据（key-value格式）
+      key1: ss
+      val1: w34324
+    prefer-ip-address: true
 
